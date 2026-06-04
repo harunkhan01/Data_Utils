@@ -48,6 +48,41 @@ void append_vec(struct vector *vec, void *value){
     vec->size++;
 }
 
+/* Consider realloc if the size is less than 1/4 capacity */
+void pop_vec(struct vector *vec){
+    if (vec->size > 0){
+        vec->size--;
+    }
+}
+
+void insert_vec(struct vector *vec, void *value, size_t index){
+    /* Copy all values down one -- O(N) */
+    if (vec->size == vec->capacity){
+        resize_vec(vec);
+    }
+
+    if (index == vec->size){
+        append_vec(vec, value);
+        return;
+    } else if (index > vec->size){
+        printf("Attempted to insert at invalid index. Exiting...\n");
+        exit(0);
+    }
+
+    size_t bound = vec->size * vec->ele_size;
+
+    uint8_t *dst = (uint8_t *)vec->data + bound;
+
+    for (size_t i = bound; i > index * vec->ele_size; i -= vec->ele_size){
+        memcpy(dst, dst - vec->ele_size, vec->ele_size);
+        dst -= vec->ele_size;
+    }
+
+    memcpy(dst, value, vec->ele_size);
+
+    vec->size++;
+}
+
 void print_vec(struct vector *vec){
     /* We treat the vector data as chars */
 
@@ -59,4 +94,5 @@ void print_vec(struct vector *vec){
         printf("%c", data[i]);
     }
 
+    printf("\n");
 }

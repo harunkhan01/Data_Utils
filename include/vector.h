@@ -15,10 +15,10 @@ struct vector {
 /* 8 MB Rough Memory Limit */
 #define MAX_VECTOR_SIZE 1 << 23
 
-
-struct vector *init_vec(size_t ele_size);
-void resize_vec(struct vector *vec);
-void append_vec(struct vector *vec, void *value);
 void print_vec(struct vector *vec);
+void resize_vec(struct vector *vec);
+struct vector *init_vec(size_t ele_size);
+void append_vec(struct vector *vec, void *value);
+void insert_vec(struct vector *vec, void *value, size_t index);
 
 #endif
