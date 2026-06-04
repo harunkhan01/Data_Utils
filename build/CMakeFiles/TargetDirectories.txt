@@ -1,3 +1,0 @@
-/home/swanfinder/c_projects/Data_Utils/build/CMakeFiles/data.dir
-/home/swanfinder/c_projects/Data_Utils/build/CMakeFiles/edit_cache.dir
-/home/swanfinder/c_projects/Data_Utils/build/CMakeFiles/rebuild_cache.dir
