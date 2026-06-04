@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/data.dir/src/vector.c.o CMakeFiles/data.dir/main.c.o -o data 
