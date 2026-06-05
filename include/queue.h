@@ -4,12 +4,13 @@
 #include <stddef.h>
 
 struct Node {
-    void *val;
+    void *data;
     struct Node *next;
 };
 
-struct Queue {
+struct Q {
     size_t size;
+    size_t ele_size;
     struct Node *front;
     struct Node *back;
 }
