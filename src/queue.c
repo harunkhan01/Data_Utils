@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <stddef.h>
+#include <string.h>
 
 #include "queue.h"
 
@@ -32,6 +33,7 @@ void append_queue(struct Q *q, void *val){
     /* We add to the back */
     if (q->front->next == NULL){
         q->back = new_node;
+        q->front->next = q->back;
     } else {
         q->back->next = new_node;
         q->back = new_node;
@@ -41,11 +43,17 @@ void append_queue(struct Q *q, void *val){
 }
 
 void print_queue(struct Q *q){
+    if (q->size == 0){
+        printf("Queue is all empty. Extiting!\n");
+        exit(1);
+    }
+
     /* Treat the data as chars */
     char *data;
 
     struct Node *tmp = q->front->next;
-    while (q != NULL){
+    while (tmp != NULL){
+        data = tmp->data;
         for (int i=0; i < q->ele_size; i++){
             printf("%c", data[i]);
         }
