@@ -10,7 +10,7 @@ struct Q *init_q(size_t ele_size){
 
     q->size = 0;
     q->ele_size = ele_size;
-    q->front = malloc(sizeof(struct SentNode));
+    q->front = malloc(sizeof(struct Node));
     q->back = q->front;
 
     q->front->next = NULL;
@@ -20,13 +20,13 @@ struct Q *init_q(size_t ele_size){
 }
 
 void append_queue(struct Q *q, void *val){
-    if (total->size > MAX_QUEUE_SIZE){
+    if (q->size > MAX_QUEUE_SIZE){
         printf("Unreasonable amount of memory requested. Exiting...\n");
         exit(0);
     }
 
     struct Node *new_node = malloc(sizeof(struct Node));
-    new_node->data = malloc(sizeof(q->ele_size))
+    new_node->data = malloc(sizeof(q->ele_size));
     memcpy(new_node->data, val, q->ele_size);
 
     /* We add to the back */
